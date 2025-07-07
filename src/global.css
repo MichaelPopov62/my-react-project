@@ -1,0 +1,20 @@
+/* src/global.css */
+
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  background-color: rgb(75, 78, 81);
+  margin: 0;
+  display: flex;
+  /* place-items: center; // властивість для грідів */
+  justify-content: center;
+  /* Центрування по горизонталі */
+  align-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

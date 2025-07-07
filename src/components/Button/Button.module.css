@@ -1,0 +1,22 @@
+src/components/Button.module.css .button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.primary {
+  background-color: royalblue;
+  color: white;
+}
+
+.secondary {
+  background-color: rgb(7, 232, 22);
+  color: black;
+}
+
+.last {
+  background-color: rgb(228, 217, 15);
+  color: black;
+}

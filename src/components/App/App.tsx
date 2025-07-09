@@ -153,70 +153,84 @@
 // // import styles from "../App/App.module.css"; // Uncomment and use if you have CSS modules
 
 // Example using inline styles instead of css-in-js or CSS modules:impo
-import { useState } from "react";
+// import { useState } from "react";
 
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { fetchPerson } from "../Person/fetchPerson"; // твоя функція з двома запитами
-import {
-  useQuery,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
-import Users from "../Users/Users";
+// import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+// import { fetchPerson } from "../Person/fetchPerson"; // твоя функція з двома запитами
+// import {
+//   useQuery,
+//   QueryClient,
+//   QueryClientProvider,
+// } from "@tanstack/react-query";
+// import Users from "../Users/Users";
 
-const queryClient = new QueryClient(); // створюємо екземпляр QueryClient
+// const queryClient = new QueryClient(); // створюємо екземпляр QueryClient
 
-export default function App() {
-  const [counter, setCounter] = useState(3); // значення id для другого запиту
+// export default function App() {
+//   const [counter, setCounter] = useState(3); // значення id для другого запиту
 
-  return (
-    // Обгортаємо весь додаток у провайдера React Query
-    <QueryClientProvider client={queryClient}>
-      <div>
-        <h1> Список користувачів</h1>
-        <Users />
+//   return (
+//     // Обгортаємо весь додаток у провайдера React Query
+//     <QueryClientProvider client={queryClient}>
+//       <div>
+//         <h1> Список користувачів</h1>
+//         <Users />
 
-        <hr />
-        <h1>Дані про персонажів</h1>
-        <CharacterSection
-          counter={counter}
-          onNext={() => setCounter((prev) => prev + 1)}
-        />
-        {/* 2. Підключаємо Devtools */}
-        <ReactQueryDevtools initialIsOpen={false} />
-      </div>
-    </QueryClientProvider>
-  );
-}
-// 3. Винесена частина з логікою запиту
-function CharacterSection({
-  counter,
-  onNext,
-}: {
-  counter: number;
-  onNext: () => void;
-}) {
-  const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["person", counter],
-    queryFn: () => fetchPerson(counter),
-  });
+//         <hr />
+//         <h1>Дані про персонажів</h1>
+//         <CharacterSection
+//           counter={counter}
+//           onNext={() => setCounter((prev) => prev + 1)}
+//         />
+//         {/* 2. Підключаємо Devtools */}
+//         <ReactQueryDevtools initialIsOpen={false} />
+//       </div>
+//     </QueryClientProvider>
+//   );
+// }
+// // 3. Винесена частина з логікою запиту
+// function CharacterSection({
+//   counter,
+//   onNext,
+// }: {
+//   counter: number;
+//   onNext: () => void;
+// }) {
+//   const { data, isLoading, isError, error } = useQuery({
+//     queryKey: ["person", counter],
+//     queryFn: () => fetchPerson(counter),
+//   });
 
-  return (
-    <>
-      <button onClick={onNext}>
-        Завантажити іншого персонажа (id: {counter})
-      </button>
-      {isLoading && <p>Завантаження...</p>}
-      {isError && error instanceof Error && <p>Помилка: {error.message}</p>}
-      {data && (
-        <div>
-          <h2>🔹 Статичний персонаж (ID: 1)</h2>
-          <pre>{JSON.stringify(data.staticPerson, null, 2)}</pre>
+//   return (
+//     <>
+//       <button onClick={onNext}>
+//         Завантажити іншого персонажа (id: {counter})
+//       </button>
+//       {isLoading && <p>Завантаження...</p>}
+//       {isError && error instanceof Error && <p>Помилка: {error.message}</p>}
+//       {data && (
+//         <div>
+//           <h2>🔹 Статичний персонаж (ID: 1)</h2>
+//           <pre>{JSON.stringify(data.staticPerson, null, 2)}</pre>
 
-          <h2>🔸 Динамічний персонаж (ID: {counter})</h2>
-          <pre>{JSON.stringify(data.dynamicPerson, null, 2)}</pre>
-        </div>
-      )}
-    </>
-  );
-}
+//           <h2>🔸 Динамічний персонаж (ID: {counter})</h2>
+//           <pre>{JSON.stringify(data.dynamicPerson, null, 2)}</pre>
+//         </div>
+//       )}
+//     </>
+//   );
+// }
+// =================================================
+
+// //form
+// import React from "react";
+// import { OrderForm } from "../Formik/Formik";
+
+// export default function App() {
+//   return (
+//     <div>
+//       <h1>Forma</h1>
+//       <OrderForm />
+//     </div>
+//   );
+// }
